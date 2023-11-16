@@ -37,6 +37,7 @@ kotlin {
             implementation(compose.components.resources)
 
             implementation(libs.kotlinx.datetime)
+            implementation(compose.materialIconsExtended)
         }
     }
 }
