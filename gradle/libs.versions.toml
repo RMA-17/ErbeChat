@@ -65,3 +65,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 serialization-plugin = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
 buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
+android-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

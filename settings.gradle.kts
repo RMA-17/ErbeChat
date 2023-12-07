@@ -18,4 +18,6 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include(":shared")
+include(":appAndroid")
+include(":appDesktop")
