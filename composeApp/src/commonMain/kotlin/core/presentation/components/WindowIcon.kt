@@ -1,4 +1,4 @@
-package presentation.windowcomponents
+package presentation.components
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon

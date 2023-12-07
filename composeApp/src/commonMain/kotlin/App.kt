@@ -26,11 +26,10 @@ import data.source.remote.users
 import kotlinx.coroutines.launch
 import presentation.ui.theme.ErbeChatTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun App(
     modifier: Modifier = Modifier,
-    onCardClick: (String) -> Unit
+    onCardClick: (String) -> Unit = {}
 ) {
     LazyColumn(
         modifier = modifier,

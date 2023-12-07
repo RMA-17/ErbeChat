@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.compose.ExperimentalComposeLibrary
 
@@ -5,6 +7,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.serialization.plugin)
+    alias(libs.plugins.buildKonfig)
 }
 
 kotlin {
@@ -25,6 +29,8 @@ kotlin {
             implementation(libs.compose.ui)
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -38,6 +44,27 @@ kotlin {
 
             implementation(libs.kotlinx.datetime)
             implementation(compose.materialIconsExtended)
+
+            //Supabase
+            implementation(project.dependencies.platform(libs.supabase.bom))
+            implementation(libs.supabase.postgresql)
+            implementation(libs.supabase.gotrue)
+            implementation(libs.supabase.realtime)
+
+            //Ktor
+            implementation(libs.ktor.client.okhttp)
+
+            //Koin
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+
+            //SerializationX
+            implementation(libs.kotlinx.serialization)
+
+            //Multi-Platform Settings
+            implementation(libs.multiplatform.settings.coroutines)
+            implementation(libs.multiplatform.settings.no.arg)
         }
     }
 }
@@ -93,3 +120,21 @@ compose.desktop {
         }
     }
 }
+
+buildkonfig {
+    packageName = "com.rmaprojects.composeMain"
+
+    defaultConfigs {
+        buildConfigField(
+            STRING,
+            "API_KEY",
+            gradleLocalProperties(rootDir).getProperty("API_KEY") ?: ""
+        )
+        buildConfigField(
+            STRING,
+            "API_URL",
+            gradleLocalProperties(rootDir).getProperty("API_URL") ?: ""
+        )
+    }
+}
+

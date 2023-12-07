@@ -1,4 +1,4 @@
-package presentation.windowcomponents
+package presentation.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable

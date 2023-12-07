@@ -1,14 +1,10 @@
-import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,17 +19,21 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import constants.APP_NAME
+import di.initKoin
 import kotlinx.coroutines.launch
 import org.jetbrains.skiko.OS
 import org.jetbrains.skiko.hostOs
+import presentation.components.WindowTopBar
 import presentation.ui.theme.ErbeChatTheme
-import presentation.windowcomponents.WindowTopBar
+import java.awt.Dimension
+
+//val koin = initKoin().koin
 
 fun main() = application {
 
     val state = rememberWindowState(
         placement = WindowPlacement.Floating,
-        isMinimized = false
+        isMinimized = false,
     )
 
     Window(
@@ -43,6 +43,8 @@ fun main() = application {
         undecorated = true,
         state = state
     ) {
+
+        window.minimumSize = Dimension(374, 665)
 
         val snackbarHostState = SnackbarHostState()
         val scope = rememberCoroutineScope()
@@ -87,7 +89,7 @@ fun main() = application {
                             onMinimizeHover = {
                                 windowState = windowState.copy(isMinimizeHovered = it)
                             },
-                            appName = "Erbe Chat",
+                            appName = APP_NAME,
                             appNameTextStyle = MaterialTheme.typography.titleMedium,
                             appNameFontWeight = FontWeight.Medium
                         )
@@ -119,11 +121,3 @@ private data class WindowRootState(
     val isMinimizeHovered: Boolean = false,
     val isMaximizedHovered: Boolean = false
 )
-
-@Preview
-@Composable
-fun AppDesktopPreview() {
-    App(
-        Modifier
-    ) {}
-}
