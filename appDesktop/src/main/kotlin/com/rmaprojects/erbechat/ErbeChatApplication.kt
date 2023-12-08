@@ -1,6 +1,6 @@
 package com.rmaprojects.erbechat
 
-import App
+import com.rmaprojects.shared.App
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,97 +21,104 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import constants.APP_NAME
+import com.rmaprojects.shared.constants.APP_NAME
+import com.rmaprojects.shared.di.initKoin
 import kotlinx.coroutines.launch
 import org.jetbrains.skiko.OS
 import org.jetbrains.skiko.hostOs
+import org.koin.core.Koin
 import presentation.components.WindowTopBar
 import presentation.ui.theme.ErbeChatTheme
 import java.awt.Dimension
 
-//val koin = initKoin().koin
+lateinit var koin: Koin
 
-fun main() = application {
+fun main() {
 
-    val state = rememberWindowState(
-        placement = WindowPlacement.Floating,
-        isMinimized = false,
-    )
+    koin = initKoin().koin
 
-    Window(
-        title = APP_NAME,
-        onCloseRequest = ::exitApplication,
-        transparent = true,
-        undecorated = true,
-        state = state
-    ) {
+    return application {
 
-        window.minimumSize = Dimension(374, 665)
+        val state = rememberWindowState(
+            placement = WindowPlacement.Floating,
+            isMinimized = false,
+        )
 
-        val snackbarHostState = SnackbarHostState()
-        val scope = rememberCoroutineScope()
-        var windowState by remember {
-            mutableStateOf(WindowRootState())
-        }
+        Window(
+            title = APP_NAME,
+            onCloseRequest = ::exitApplication,
+            transparent = true,
+            undecorated = true,
+            state = state
+        ) {
 
-        ErbeChatTheme {
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
-            ) {
-                Scaffold(
-                    topBar = {
-                        WindowTopBar(
-                            onDoubleClick = {
-                                if (state.placement == WindowPlacement.Floating) {
-                                    state.placement = WindowPlacement.Maximized
-                                } else {
-                                    state.placement = WindowPlacement.Floating
+            window.minimumSize = Dimension(374, 665)
+
+            val snackbarHostState = SnackbarHostState()
+            val scope = rememberCoroutineScope()
+            var windowState by remember {
+                mutableStateOf(WindowRootState())
+            }
+
+            ErbeChatTheme {
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                ) {
+                    Scaffold(
+                        topBar = {
+                            WindowTopBar(
+                                onDoubleClick = {
+                                    if (state.placement == WindowPlacement.Floating) {
+                                        state.placement = WindowPlacement.Maximized
+                                    } else {
+                                        state.placement = WindowPlacement.Floating
+                                    }
+                                },
+                                onMinimizeClick = { state.isMinimized = !state.isMinimized },
+                                onMaximizeClick = {
+                                    if (state.placement == WindowPlacement.Floating) {
+                                        if (hostOs == OS.MacOS) state.placement =
+                                            WindowPlacement.Fullscreen
+                                        else state.placement = WindowPlacement.Maximized
+                                    } else {
+                                        state.placement = WindowPlacement.Floating
+                                    }
+                                },
+                                onExitClick = {
+                                    exitApplication()
+                                },
+                                onExitHover = {
+                                    windowState = windowState.copy(isExitHovered = it)
+                                },
+                                onMaximizeHover = {
+                                    windowState = windowState.copy(isMaximizedHovered = it)
+                                },
+                                onMinimizeHover = {
+                                    windowState = windowState.copy(isMinimizeHovered = it)
+                                },
+                                appName = APP_NAME,
+                                appNameTextStyle = MaterialTheme.typography.titleMedium,
+                                appNameFontWeight = FontWeight.Medium
+                            )
+                        },
+                        snackbarHost = {
+                            SnackbarHost(
+                                snackbarHostState
+                            )
+                        }
+                    ) { innerPadding ->
+                        App(
+                            modifier = Modifier.padding(innerPadding),
+                            onCardClick = {
+                                scope.launch {
+                                    snackbarHostState.showSnackbar(
+                                        message = it
+                                    )
                                 }
-                            },
-                            onMinimizeClick = { state.isMinimized = !state.isMinimized },
-                            onMaximizeClick = {
-                                if (state.placement == WindowPlacement.Floating) {
-                                    if (hostOs == OS.MacOS) state.placement =
-                                        WindowPlacement.Fullscreen
-                                    else state.placement = WindowPlacement.Maximized
-                                } else {
-                                    state.placement = WindowPlacement.Floating
-                                }
-                            },
-                            onExitClick = {
-                                exitApplication()
-                            },
-                            onExitHover = {
-                                windowState = windowState.copy(isExitHovered = it)
-                            },
-                            onMaximizeHover = {
-                                windowState = windowState.copy(isMaximizedHovered = it)
-                            },
-                            onMinimizeHover = {
-                                windowState = windowState.copy(isMinimizeHovered = it)
-                            },
-                            appName = APP_NAME,
-                            appNameTextStyle = MaterialTheme.typography.titleMedium,
-                            appNameFontWeight = FontWeight.Medium
-                        )
-                    },
-                    snackbarHost = {
-                        SnackbarHost(
-                            snackbarHostState
+                            }
                         )
                     }
-                ) { innerPadding ->
-                    App(
-                        modifier = Modifier.padding(innerPadding),
-                        onCardClick = {
-                            scope.launch {
-                                snackbarHostState.showSnackbar(
-                                    message = it
-                                )
-                            }
-                        }
-                    )
                 }
             }
         }

@@ -25,6 +25,8 @@ multiplatformSettingsCoroutines = "1.1.1"
 supabaseBom = "1.4.7"
 org-jetbrains-kotlin-jvm = "1.9.0"
 buildKonfig = "0.15.1"
+voyager="1.0.0-rc10"
+swing="1.8.0-RC"
 
 [libraries]
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
@@ -49,6 +51,7 @@ multiplatform-settings-no-arg = { module = "com.russhwolf:multiplatform-settings
 multiplatform-settings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettingsCoroutines" }
 supabase-bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "supabaseBom" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx" }
+kotlin-coroutine-swing= { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "swing" }
 supabase-postgresql = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
 supabase-gotrue = { module = "io.github.jan-tennert.supabase:gotrue-kt" }
 supabase-realtime = { module = "io.github.jan-tennert.supabase:realtime-kt" }
@@ -56,6 +59,10 @@ koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose"}
 koin-compose = { module = "io.insert-koin:koin-compose"}
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 
 [plugins]
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }

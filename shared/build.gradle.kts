@@ -1,6 +1,5 @@
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
@@ -18,10 +17,11 @@ kotlin {
     
     sourceSets {
         val desktopMain by getting
-        
-        androidMain.dependencies {}
-        desktopMain.dependencies {}
-        commonMain.dependencies {
+
+        sourceSets["androidMain"].dependencies {}
+        sourceSets["desktopMain"].dependencies {}
+
+        sourceSets["commonMain"].dependencies {
             api(compose.runtime)
             api(compose.foundation)
             api(compose.material3)
@@ -51,12 +51,18 @@ kotlin {
             //Multi-Platform Settings
             implementation(libs.multiplatform.settings.coroutines)
             implementation(libs.multiplatform.settings.no.arg)
+
+            //Voyager - Navigation
+            implementation(libs.voyager.transitions)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.bottomSheetNavigator)
+            implementation(libs.voyager.koin)
         }
     }
 }
 
 android {
-    namespace = "com.rmaprojects.rabbaniichat"
+    namespace = "com.rmaprojects.erbechat"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

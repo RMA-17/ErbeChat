@@ -9,11 +9,12 @@ dependencies {
 }
 
 android {
+
     namespace = "com.rmaprojects.erbechat"
-    compileSdk = 33
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.rmaprojects.rabbaniichat"
+        applicationId = "com.rmaprojects.erbechat"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
