@@ -55,7 +55,6 @@ fun main() {
             window.minimumSize = Dimension(374, 665)
 
             val snackbarHostState = SnackbarHostState()
-            val scope = rememberCoroutineScope()
             var windowState by remember {
                 mutableStateOf(WindowRootState())
             }
@@ -109,14 +108,7 @@ fun main() {
                         }
                     ) { innerPadding ->
                         App(
-                            modifier = Modifier.padding(innerPadding),
-                            onCardClick = {
-                                scope.launch {
-                                    snackbarHostState.showSnackbar(
-                                        message = it
-                                    )
-                                }
-                            }
+                            modifier = Modifier.padding(innerPadding)
                         )
                     }
                 }

@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
+    api(project(":shared"))
 
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
