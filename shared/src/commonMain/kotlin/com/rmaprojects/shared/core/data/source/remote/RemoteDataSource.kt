@@ -61,6 +61,10 @@ class RemoteDataSource(
         return getUser
     }
 
+    suspend fun signOutUser() {
+        client.gotrue.logout()
+    }
+
     private fun generateEmail(): String {
         val chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         var result = ""

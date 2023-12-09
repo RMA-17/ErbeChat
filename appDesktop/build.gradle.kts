@@ -4,9 +4,11 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":shared"))
+    api(project(":shared"))
 
     implementation(compose.desktop.currentOs)
+    //Voyager - coroutine support
+    implementation(libs.kotlinx.coroutines.swing)
 }
 
 compose.desktop {

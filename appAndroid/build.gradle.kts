@@ -46,6 +46,7 @@ android {
 dependencies {
     api(project(":shared"))
 
+    implementation(libs.androidx.core.ktx)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.androidx.activity.compose)

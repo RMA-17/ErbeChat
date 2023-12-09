@@ -11,7 +11,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,13 +21,12 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.rmaprojects.shared.constants.APP_NAME
+import com.rmaprojects.shared.core.presentation.ui.theme.ErbeChatTheme
 import com.rmaprojects.shared.di.initKoin
-import kotlinx.coroutines.launch
 import org.jetbrains.skiko.OS
 import org.jetbrains.skiko.hostOs
 import org.koin.core.Koin
-import presentation.components.WindowTopBar
-import presentation.ui.theme.ErbeChatTheme
+import com.rmaprojects.shared.core.presentation.ui.components.WindowTopBar
 import java.awt.Dimension
 
 lateinit var koin: Koin

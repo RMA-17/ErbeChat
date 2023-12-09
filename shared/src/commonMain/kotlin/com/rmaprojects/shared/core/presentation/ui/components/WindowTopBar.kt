@@ -1,4 +1,4 @@
-package presentation.components
+package com.rmaprojects.shared.core.presentation.ui.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -18,6 +18,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.window.WindowScope
+import com.russhwolf.settings.ObservableSettings
+import presentation.components.WindowIcon
+import presentation.components.WindowIconButton
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
