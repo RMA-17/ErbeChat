@@ -23,7 +23,7 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.rmaprojects.shared.core.presentation.ui.screen.home.HomeScreen
-import com.rmaprojects.shared.features.auth.presentation.ui.screen.auth.login.LoginScreen
+import com.rmaprojects.shared.features.auth.screen.login.LoginScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.seconds

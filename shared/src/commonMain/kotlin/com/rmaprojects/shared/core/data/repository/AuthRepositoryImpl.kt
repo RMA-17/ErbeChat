@@ -1,9 +1,9 @@
-package com.rmaprojects.shared.features.auth.data.repository
+package com.rmaprojects.shared.core.data.repository
 
 import com.rmaprojects.shared.core.data.source.local.LocalDataSource
 import com.rmaprojects.shared.core.data.source.remote.RemoteDataSource
-import com.rmaprojects.shared.features.auth.domain.model.LocalUser
-import com.rmaprojects.shared.features.auth.domain.repository.AuthRepository
+import com.rmaprojects.shared.core.domain.model.LocalUser
+import com.rmaprojects.shared.core.domain.repository.AuthRepository
 
 class AuthRepositoryImpl(
     private val remoteDataSource: RemoteDataSource,

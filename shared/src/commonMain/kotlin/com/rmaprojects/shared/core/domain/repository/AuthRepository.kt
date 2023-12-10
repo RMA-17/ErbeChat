@@ -1,6 +1,6 @@
-package com.rmaprojects.shared.features.auth.domain.repository
+package com.rmaprojects.shared.core.domain.repository
 
-import com.rmaprojects.shared.features.auth.domain.model.LocalUser
+import com.rmaprojects.shared.core.domain.model.LocalUser
 
 interface AuthRepository {
     suspend fun signIn(

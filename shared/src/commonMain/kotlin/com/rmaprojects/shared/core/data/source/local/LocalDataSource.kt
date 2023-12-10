@@ -2,7 +2,7 @@ package com.rmaprojects.shared.core.data.source.local
 
 import com.rmaprojects.shared.constants.LocalKeys
 import com.rmaprojects.shared.core.data.source.remote.model.auth.UserDtoItem
-import com.rmaprojects.shared.features.auth.domain.model.LocalUser
+import com.rmaprojects.shared.core.domain.model.LocalUser
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.get
 import com.russhwolf.settings.set

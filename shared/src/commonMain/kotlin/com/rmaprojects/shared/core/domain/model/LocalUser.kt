@@ -1,4 +1,4 @@
-package com.rmaprojects.shared.features.auth.domain.model
+package com.rmaprojects.shared.core.domain.model
 
 data class LocalUser(
     val bio: String,

@@ -2,7 +2,7 @@ package com.rmaprojects.shared.core.presentation.ui.screen.splash
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import com.rmaprojects.shared.features.auth.domain.repository.AuthRepository
+import com.rmaprojects.shared.core.domain.repository.AuthRepository
 import kotlinx.coroutines.launch
 
 class SplashViewModel(

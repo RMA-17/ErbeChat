@@ -57,6 +57,9 @@ kotlin {
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.bottomSheetNavigator)
             implementation(libs.voyager.koin)
+
+            //Window Size Multiplatform
+            implementation(libs.material3.window.size.multiplatform)
         }
     }
 }

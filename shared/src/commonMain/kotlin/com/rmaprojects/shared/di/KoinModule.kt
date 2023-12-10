@@ -6,9 +6,9 @@ import com.rmaprojects.shared.core.data.source.local.LocalDataSource
 import com.rmaprojects.shared.core.data.source.remote.RemoteDataSource
 import com.rmaprojects.shared.core.domain.repository.ChatRepository
 import com.rmaprojects.shared.core.presentation.ui.screen.splash.SplashViewModel
-import com.rmaprojects.shared.features.auth.data.repository.AuthRepositoryImpl
-import com.rmaprojects.shared.features.auth.domain.repository.AuthRepository
-import com.rmaprojects.shared.features.auth.presentation.ui.screen.auth.login.LoginViewModel
+import com.rmaprojects.shared.core.data.repository.AuthRepositoryImpl
+import com.rmaprojects.shared.core.domain.repository.AuthRepository
+import com.rmaprojects.shared.features.auth.screen.login.LoginViewModel
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.gotrue.GoTrue
