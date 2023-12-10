@@ -67,12 +67,10 @@ class LoginScreen : Screen {
         val navigator = LocalNavigator.currentOrThrow
         val scope = rememberCoroutineScope()
 
-
         val isExpanded = windowSizeClass.widthSizeClass > WindowWidthSizeClass.Medium
         val loginScreenState = viewModel.loginScreenState
         val snackbarHostState = SnackbarHostState()
         val eventFlow = viewModel.eventFlow.collectAsState()
-
 
         Row(
             modifier = Modifier.fillMaxSize()
