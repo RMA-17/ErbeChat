@@ -22,8 +22,8 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.rmaprojects.shared.core.presentation.ui.screen.home.HomeScreen
 import com.rmaprojects.shared.features.auth.screen.login.LoginScreen
+import com.rmaprojects.shared.features.chats.screen.chat.ChatScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.seconds
@@ -37,11 +37,11 @@ class SplashScreen : Screen {
         val scope = rememberCoroutineScope()
         val navigator = LocalNavigator.currentOrThrow
 
-        viewModel.checkLogin {  isLoggedIn ->
+        viewModel.checkLogin { isLoggedIn ->
             scope.launch {
                 delay(.3.seconds)
                 if (isLoggedIn) {
-                    navigator.replace(HomeScreen())
+                    navigator.replace(ChatScreen())
                 } else {
                     navigator.replace(LoginScreen())
                 }

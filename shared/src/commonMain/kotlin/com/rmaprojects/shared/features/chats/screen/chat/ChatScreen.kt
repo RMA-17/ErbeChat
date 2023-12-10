@@ -1,4 +1,4 @@
-package com.rmaprojects.shared.features.chats.screen
+package com.rmaprojects.shared.features.chats.screen.chat
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen

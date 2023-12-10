@@ -7,11 +7,6 @@ interface AuthRepository {
         username: String,
         password: String
     )
-    suspend fun signUp(
-        name: String,
-        username: String,
-        password: String
-    )
     suspend fun retrieveCurrentSettings(): LocalUser
     suspend fun logOut()
 }

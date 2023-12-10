@@ -60,6 +60,9 @@ kotlin {
 
             //Window Size Multiplatform
             implementation(libs.material3.window.size.multiplatform)
+
+            //Result Monad
+            implementation(libs.kotlin.result)
         }
     }
 }

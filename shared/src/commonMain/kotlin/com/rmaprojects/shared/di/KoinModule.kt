@@ -7,7 +7,9 @@ import com.rmaprojects.shared.core.data.source.remote.RemoteDataSource
 import com.rmaprojects.shared.core.domain.repository.ChatRepository
 import com.rmaprojects.shared.core.presentation.ui.screen.splash.SplashViewModel
 import com.rmaprojects.shared.core.data.repository.AuthRepositoryImpl
+import com.rmaprojects.shared.core.domain.interactor.UseCaseInteractor
 import com.rmaprojects.shared.core.domain.repository.AuthRepository
+import com.rmaprojects.shared.core.domain.usecase.ErbeChatUseCase
 import com.rmaprojects.shared.features.auth.screen.login.LoginViewModel
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.createSupabaseClient
@@ -25,11 +27,13 @@ class KoinModule {
 
     companion object {
         fun coreModule(): Module = module {
-            single { provideSupabaseClient() }
+            single<SupabaseClient> { provideSupabaseClient() }
             singleOf(::RemoteDataSource)
             singleOf(::LocalDataSource)
             single<ChatRepository> { ChatRepositoryImpl(get()) }
             single<AuthRepository> { AuthRepositoryImpl(get(), get()) }
+            single<ErbeChatUseCase> { UseCaseInteractor(get()) }
+
         }
 
         fun featureModules(): Module = module {

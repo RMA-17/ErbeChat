@@ -14,11 +14,6 @@ class AuthRepositoryImpl(
         localDataSource.saveUserData(result)
     }
 
-    override suspend fun signUp(name: String, username: String, password: String) {
-        val result = remoteDataSource.signUpUser(username, name, password)
-        localDataSource.saveUserData(result)
-    }
-
     override suspend fun retrieveCurrentSettings(): LocalUser {
         return localDataSource.getUserData()
     }
